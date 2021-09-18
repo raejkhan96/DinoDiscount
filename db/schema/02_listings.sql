@@ -8,9 +8,9 @@ CREATE TABLE listings (
   price INTEGER NOT NULL,
   description TEXT,
   picture VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL,
+  type_id INTEGER REFERENCES types(id) NOT NULL,
   visits INTEGER DEFAULT 0,
-  time_period VARCHAR(255) NOT NULL,
+  time_period_id INTEGER REFERENCES time_period(id) NOT NULL,
   user_id INTEGER REFERENCES users(id) NOT NULL,
   sold BOOLEAN DEFAULT FALSE
 );
