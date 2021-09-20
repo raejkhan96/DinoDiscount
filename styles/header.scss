@@ -1,4 +1,30 @@
+.dino-nav {
+  margin-left: 5%;
+  margin-right: 5%
+}
 .nav-search {
-  width: 300px;
-  background-color: red
+  width: 400px;
+  height: 30px
+}
+
+a:link {
+  text-decoration: none;
+
+}
+.text-color {
+  color: #055001;
+}
+.nav-btn {
+  height: 30px;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+}
+.navbar-item > .active > a {
+  color: aqua;
+  background-color: chartreuse;
+}
+.nav-item >  {
+  color: aqua;
 }
