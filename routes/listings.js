@@ -1,3 +1,4 @@
+const { Template } = require('ejs');
 const express = require('express');
 const router  = express.Router();
 
@@ -21,14 +22,23 @@ const listingsRoutes = function(db) {
       })
   });
 
+  // router.post("/search", (req, res) => {
+  //   console.log("=========>testSJ", req.body)
+  //   res.send("test")
+  // })
+
   router.get("/search", (req, res) => {
+    // console.log("##Test", req.query);
+
     const search = {
-      type: 'herbivore',
-      time_period: 'jurassic',
-      min_price: '100000',
-      max_price: '',
-      most_popular: false,
-    }
+      name: req.query.name,
+      type: req.query.type,
+      time_period: req.query.time_period,
+      min_price: req.query.min_price,
+      max_price: req.query.max_price,
+      most_views: req.query.most_views,
+      most_recent: req.query.most_recent
+    };
 
     const searchParams = [];
     let query = `
@@ -38,6 +48,11 @@ const listingsRoutes = function(db) {
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
     `;
+
+    if(search.name) {
+      searchParams.push(`%${search.name}%`);
+      query += `AND listings.name ILIKE $${searchParams.length}`
+    }
 
     if(search.type) {
       searchParams.push(`%${search.type}%`);
@@ -59,13 +74,25 @@ const listingsRoutes = function(db) {
       query += `AND listings.price <= $${searchParams.length}`
     }
 
-    if(search.most_popular) {
-      query += `ORDER BY listing.visits DESC`
+    if(search.most_views) {
+      query += `ORDER BY listings.visits DESC`
     }
+
+    if(search.recent) {
+      query += `ORDER BY listings.date_posted DESC`
+    }
+
+
 
     db.query(query, searchParams)
       .then(searchResults => {
-        res.json(searchResults.rows);
+        const listings = searchResults.rows;
+        // res.json(listings);
+        const templateVars = {
+          listings
+        };
+
+        res.render('search-page', templateVars)
       })
       .catch(error => {
         console.log("Query Error:", error.message);
