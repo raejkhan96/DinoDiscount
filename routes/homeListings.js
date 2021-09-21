@@ -27,7 +27,6 @@ const homeRoutes = function(db) {
       })
   });
 
-
   return router;
 };
 

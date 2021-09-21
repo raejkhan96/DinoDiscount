@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search page</title>
+  <title>My Messages</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -78,56 +78,18 @@
     </div>
   </header>
 
-  <main>
+  <main class="container">
 
-    <!-- Search/filer dropdown -->
+    <div class="container mb-5"></div>
 
-    <div class="d-grid gap-2 my-1">
-      <button class="mx-3 py-0 btn btn-lg" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#filter-bar" aria-controls="filter-bar">Filter by</button>
-    </div>
-    <aside id="filter-bar" class="collapse bd-aside sticky-xl-top text-muted align-self-start px-4 my-2">
-      <form action="/api/listings/search" method="GET" class="row g-3">
-        <div class="col-4">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" name="name" class="form-control">
-        </div>
-        <div class="col-4">
-          <label for="type" class="form-label">Type</label>
-          <input type="text" name="type" class="form-control">
-        </div>
-        <div class="col-4">
-          <label for="time_period" class="form-label">Time Period</label>
-          <input type="text" name="time_period" class="form-control">
-        </div>
-        <div class="form-check form-switch col-2">
-          <label class="form-check-label" for="most_views">Sort by Most Views</label>
-          <input class="form-check-input" name="most_views" type="checkbox">
-          <label class="form-check-label" for="most_recent">Sort by Most Recent</label>
-          <input class="form-check-input" name="most_recent" type="checkbox">
-        </div>
-        <div class="col-2">
-        </div>
-        <div class="col-2">
-          <label for="min_price" class="form-label">Minimum Price</label>
-          <input type="number" name="min_price" class="form-control">
-        </div>
-        <div class="col-2">
-          <label for="max_price" class="form-label">Maximum Price</label>
-          <input type="number" name="max_price" class="form-control">
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
-    </aside>
+    <% for (const message of userMessages) { %>
 
-    <!-- Message Modal popup -->
-
-    <!-- <div class="modal fade" id="message_modal" tabindex="-1">
+    <!-- Message Modal -->
+    <div class="modal fade" id="message_modal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header border-0 pb-1">
-            <h5 class="modal-title" id="exampleModalLabel">Contact seller </h5>
+            <h5 class="modal-title" id="exampleModalLabel">Reply to <%= message.sender_name %> </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <form action="/api/messages" method="POST">
@@ -139,44 +101,42 @@
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Send Message</button>
             </div>
-        </form>
+          </form>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <!-- Listings cards -->
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="listing-cards">
-
-          <% for (let listing of listings) {%>
-            <div class="col" id="listings">
-              <div class="card shadow-sm">
-                <img src="<%= listing.picture %>" class="img-fluid" alt="listing image" style="height: 30vw;">
-                <div class="card-body">
-                  <dl class="row">
-                    <h5 class="card-title col-8"><%= listing.name %></h5>
-                    <figure class="text-end col-4">
-                      <h6>$<%= listing.price.toLocaleString() %></h6>
-                    </figure>
-                  </dl>
-                  <p class="card-text"><%= listing.description.slice(0, 40) %></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button name="view-button" type="submit" class="btn btn-med btn-outline-secondary">View</button>
-                      <span class="d-none"> <%=listing.id%> </span>
-                      <button type="button" class="btn btn-med btn-outline-secondary" data-bs-toggle="button">Like</button>
-                    </div>
-                    <small class="text-muted"><%= listing.visits %> visits</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% } %>
-
+    <!-- Message cards -->
+    <div class="my-1">
+      <div class="col-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-250">
+          <div class="col p-4">
+            <div class="mb-1 text-muted">From user: <%= message.sender_name %> </div>
+            <p class="h6 mb-auto"> <%= message.message %> </p>
+            <a href="/api/listings/<%= message.listing_id %>" class="btn btn-med btn-outline-secondary mt-4">View Listing</a>
+            <button type="button" class="btn btn-med btn-outline-secondary mt-4" data-bs-toggle="modal" data-bs-target="#message_modal">Reply</button>
+          </div>
         </div>
       </div>
+
+      <% } %>
+
+      <!-- <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Post title</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+          </div>
+        </div>
+      </div> -->
+
     </div>
 
   </main>
