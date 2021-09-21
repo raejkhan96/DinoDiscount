@@ -58,7 +58,6 @@ const messagesRoutes = function(db) {
     messageInsertParams.push(userId);
     messageInsertParams.push(listingId);
     messageInsertParams.push(userMessage);
-    console.log(sellerId);
 
     let query = `
     INSERT INTO messages (user_sender_id, listing_id, message, user_receiver_id)
