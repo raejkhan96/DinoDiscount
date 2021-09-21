@@ -1,12 +1,20 @@
 $(document).ready(function() {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/listings/search"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
+
+  //Script for messages.ejs - Grab message Id for message modal
+  $('#message-reply-modal').on('show.bs.modal', function (event) {
+    const button = $(event.relatedTarget) // Button that triggered the modal
+    const messageId = button.data('message-id') // Extract info from data-* attributes
+    const recipient = button.data('sender-name') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    const modal = $(this)
+    modal.find('.modal-title').text('Reply to ' + recipient)
+    modal.find('.modal-body input').val(messageId)
+  });
+
+
+
+  //Script for search-page.ejs - Display the clicked listing only
   $("#listing-cards").click(function(event) {
     event.preventDefault();
     const targetListingId = $(event.target).siblings().html().slice(1);

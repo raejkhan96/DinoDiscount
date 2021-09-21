@@ -84,18 +84,32 @@
 
     <% for (const message of userMessages) { %>
 
-    <!-- Message Modal -->
+    <!-- Message cards -->
+    <div class="my-1" id="message-reply-modal">
+      <div class="col-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-250">
+          <div class="col p-4">
+            <div class="mb-1 text-muted">From user: <%= message.sender_name %> </div>
+            <p class="h6 mb-auto"> <%= message.message %> </p>
+            <a href="/api/listings/<%= message.listing_id %>" class="btn btn-med btn-outline-secondary mt-4">View Listing</a>
+            <button type="button" class="btn btn-med btn-outline-secondary mt-4" data-sender-name="<%= message.sender_name %>" data-message-id="<%= message.message_id %>" data-bs-toggle="modal" data-bs-target="#message_modal">Reply</button>
+          </div>
+        </div>
+      </div>
+
+          <!-- Message Modal -->
     <div class="modal fade" id="message_modal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header border-0 pb-1">
-            <h5 class="modal-title" id="exampleModalLabel">Reply to <%= message.sender_name %> </h5>
+            <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
-          <form action="/api/messages" method="POST">
+          <form action="/api/messages/reply" method="POST">
             <div class="modal-body pt-0">
               <label for="user_message" class="form-label"></label>
               <textarea class="form-control" name="user_message" rows="3" placeholder="Type message"></textarea>
+              <input type="hidden" name="message_id" value="<%= message.message_id %>">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -105,19 +119,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Message cards -->
-    <div class="my-1">
-      <div class="col-12">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-250">
-          <div class="col p-4">
-            <div class="mb-1 text-muted">From user: <%= message.sender_name %> </div>
-            <p class="h6 mb-auto"> <%= message.message %> </p>
-            <a href="/api/listings/<%= message.listing_id %>" class="btn btn-med btn-outline-secondary mt-4">View Listing</a>
-            <button type="button" class="btn btn-med btn-outline-secondary mt-4" data-bs-toggle="modal" data-bs-target="#message_modal">Reply</button>
-          </div>
-        </div>
-      </div>
 
       <% } %>
 
