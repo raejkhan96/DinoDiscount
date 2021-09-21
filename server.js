@@ -52,7 +52,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
 app.use("/favorites", favoritesRoutes(db));
-// app.use("/login", loginRoutes(db));
+app.use("/login", loginRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/homepage", homeRoutes(db));
