@@ -42,6 +42,7 @@ const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require("./routes/listings");
 const favoritesRoutes = require("./routes/favorites");
 const loginRoutes = require("./routes/login");
+const homeRoutes = require("./routes/homeListings");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,6 +52,8 @@ app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
 app.use("/favorites", favoritesRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/api/listings", listingsRoutes(db));
+app.use("/homepage", homeRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -70,6 +73,8 @@ app.get("/", (req, res) => {
   //console.log("req session:", req.session);
   res.render("index", {user_id});
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
