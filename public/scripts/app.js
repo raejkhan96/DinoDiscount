@@ -16,6 +16,27 @@ $(document).ready(function() {
         listing = response[0];
 
         const listingCard = `
+        <div class="modal fade" id="message_modal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header border-0 pb-1">
+                <h5 class="modal-title" id="exampleModalLabel">Contact seller </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <form action="/api/messages" method="POST">
+                <div class="modal-body pt-0">
+                  <label for="user_message" class="form-label"></label>
+                  <textarea class="form-control" name="user_message" rows="3" placeholder="Type message"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         <div class="album py-5 bg-light">
           <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="listing-cards">
@@ -49,6 +70,7 @@ $(document).ready(function() {
         const $bodyMainTag = $('main');
         $bodyMainTag.empty();
         $bodyMainTag.append(listingCard);
+        res.cookie('listing_id', 'test');
 
       });
 

@@ -94,6 +94,7 @@ const listingsRoutes = function(db) {
 
   router.get("/:listingId", (req, res) => {
 
+    res.cookie('listing_id', req.params.listingId);
     const listingId = [req.params.listingId];
 
     let query = `

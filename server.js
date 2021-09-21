@@ -64,7 +64,7 @@ app.get('/login/:id', (req, res) => {
   res.cookie('user_id', req.params.id);
 
   // redirect the client
-  res.redirect('/');
+  res.redirect('/homepage');
 });
 
 app.listen(PORT, () => {
