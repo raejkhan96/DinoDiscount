@@ -22,10 +22,8 @@ const listingsRoutes = function(db) {
       })
   });
 
-  // router.post("/search", (req, res) => {
-  //   console.log("=========>testSJ", req.body)
-  //   res.send("test")
-  // })
+
+
 
   router.get("/search", (req, res) => {
     // console.log("##Test", req.query);
@@ -83,7 +81,6 @@ const listingsRoutes = function(db) {
     }
 
 
-
     db.query(query, searchParams)
       .then(searchResults => {
         const listings = searchResults.rows;
@@ -98,7 +95,6 @@ const listingsRoutes = function(db) {
         console.log("Query Error:", error.message);
       })
   });
-
 
   return router;
 };
