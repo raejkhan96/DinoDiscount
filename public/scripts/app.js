@@ -16,8 +16,9 @@ $(document).ready(function() {
   });
 
 
-
+  //NOT USED ANYMORE. - DEPRECATED SCRIPT!! - WAS TRYING TO MIMIC AN SPA EXPERIENCE
   //Script for search-page.ejs - Display the clicked listing only
+  /*
   $("#listing-cards").click(function(event) {
     event.preventDefault();
     const targetListingId = $(event.target).siblings().html().slice(1);
@@ -85,5 +86,9 @@ $(document).ready(function() {
 
       });
 
-  });
+  });*/
+
+
+
+
 });
