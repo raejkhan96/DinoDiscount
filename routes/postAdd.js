@@ -6,16 +6,7 @@ const postAddRoutes = function(db) {
 
   router.get("/", (req, res) => {
 
-    res.render('post-add')
-
-    db.query(query, messageInsertParams)
-      .then(queryResult => {
-        console.log("Message reply insterted into db\n", queryResult.rows)
-        res.redirect("/api/messages");
-      })
-      .catch(error => {
-        console.log("Query Error:", error.message);
-      })
+    res.render('post-add');
 
   });
 
@@ -28,15 +19,13 @@ const postAddRoutes = function(db) {
     addNewListingParams.push(req.body.picture);
     addNewListingParams.push(req.body.type);
     addNewListingParams.push(req.body.time_period);
+    addNewListingParams.push(req.cookies.user_id);
 
     const query = `
-    INSERT INTO listings (name, price, description, picture, type_id, time_period_id, user_id, visits)
-
+    INSERT INTO listings (name, price, description, picture, type_id, time_period_id, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
     `;
-
-    res.send(addNewListingParams)
-
     db.query(query, addNewListingParams)
       .then(queryResult => {
         console.log("New listing insterted into db\n", queryResult.rows)
