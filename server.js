@@ -39,12 +39,13 @@ app.use(cookieParser());
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require("./routes/listings");
-const favoritesRoutes = require("./routes/favorites");
+const myfavoritesRoutes = require("./routes/favorites");
+const mylistingsRoutes = require("./routes/mylistings");
 const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
+const postAddRoutes = require("./routes/postAdd");
 const dinoCardRoutes = require('./routes/viewCard.js');
-const postAddRoutes = require("./routes/post-add");
 
 
 // Mount all resource routes
@@ -53,8 +54,9 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
-app.use("/favorites", favoritesRoutes(db));
-// app.use("/login", loginRoutes(db));
+app.use("/favorites", myfavoritesRoutes(db));
+app.use("/mylistings", mylistingsRoutes(db));
+app.use("/login", loginRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/homepage", homeRoutes(db));

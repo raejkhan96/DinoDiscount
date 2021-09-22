@@ -1,3 +1,6 @@
+body {
+  // background-color: #F8F9FA;
+}
 .dino-nav {
   margin-left: 5%;
   margin-right: 5%
@@ -28,9 +31,24 @@ a:link {
 
 }
 
-.checked {
-  color: blue;
+.fav-msg {
+  color: rgb(47, 192, 47)
 }
+.fav-msg:hover {
+  color: #808992;
+}
+
+.visits {
+  height: 30px;
+  width: 100px;
+  background-color: #808992;
+  color: white;
+  border-radius: 1px;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 3px;
+}
+
 .navbar-item > .active > a {
   color: aqua;
   background-color: chartreuse;

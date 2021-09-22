@@ -2,12 +2,12 @@ const { Template } = require('ejs');
 const express = require('express');
 const router  = express.Router();
 
-const favoriteRoutes = (db) => {
+const myfavoritesRoutes = (db) => {
   console.log("inside favorites");
 
   router.get("/", (req, res) => {
-    const user_id = req.cookies.user_id;
-    console.log("req:", req.cookies.user_id);
+    const user = req.cookies.user;
+   // console.log("req:", req.cookies.user_id);
     let query = `
     SELECT user_favorite.listing_id as favlisting_id, users.id as user_id,users.name as user_name,user_pic, listings.*
     FROM user_favorite
@@ -16,10 +16,10 @@ const favoriteRoutes = (db) => {
     WHERE user_favorite.user_id = $1
     `;
     //;
-    db.query(query, [user_id])
+    db.query(query, [user.user_id])
     .then(searchResults => {
       const listings = searchResults.rows;
-      const templateVars = { listings };
+      const templateVars = { user,listings };
       console.log(templateVars);
       res.render('favorites', templateVars)
     })
@@ -30,9 +30,9 @@ const favoriteRoutes = (db) => {
 
 
   router.get("/delete/:id", (req, res) => {
-    const user_id = req.cookies.user_id;
+    const user_id = req.cookies.user.user_id;
     const listing_id = req.params.id;
-    console.log("delete user_id:", req.cookies.user_id);
+    //console.log("delete user_id:", req.cookies.user_id);
     let query = `
     DELETE FROM user_favorite
     WHERE user_id = $1 AND listing_id = $2;
@@ -50,5 +50,5 @@ const favoriteRoutes = (db) => {
 
 }
 
-module.exports = favoriteRoutes;
+module.exports = myfavoritesRoutes;
 
