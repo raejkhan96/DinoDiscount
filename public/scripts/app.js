@@ -1,4 +1,7 @@
+
+
 $(document).ready(function() {
+
 
   //Script for messages.ejs - Grab message Id for message modal
   $('#message-reply-modal').on('show.bs.modal', function (event) {

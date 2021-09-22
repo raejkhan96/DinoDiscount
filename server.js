@@ -20,7 +20,7 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +43,7 @@ const favoritesRoutes = require("./routes/favorites");
 const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
+const postAddRoutes = require("./routes/postadd");
 
 
 // Mount all resource routes
@@ -52,10 +53,11 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
 app.use("/favorites", favoritesRoutes(db));
-app.use("/login", loginRoutes(db));
+// app.use("/login", loginRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/homepage", homeRoutes(db));
+app.use("/postadd", postAddRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -69,6 +71,7 @@ app.use("/homepage", homeRoutes(db));
 //   // redirect the client
 //   res.redirect('/');
 // });
+
 
 app.get("/", (req, res) => {
   user_id = req.params.user_id;
@@ -84,6 +87,16 @@ app.get('/login/:id', (req, res) => {
   res.redirect('/homepage');
 });
 
+
+app.get("/api/maps", (req, res) => {
+
+  const templateVars = {
+    latitude: 51.505,
+    longitude: -0.09
+  };
+
+  res.render("maps", templateVars);
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
