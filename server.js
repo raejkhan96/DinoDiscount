@@ -43,7 +43,7 @@ const favoritesRoutes = require("./routes/favorites");
 const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
-const postAddRoutes = require("./routes/postadd");
+const postAddRoutes = require("./routes/postAdd");
 
 
 // Mount all resource routes
