@@ -100,6 +100,34 @@ const listingsRoutes = function(db) {
       })
   });
 
+  router.get("/:listingId", (req, res) => {
+
+    res.cookie('listing_id', req.params.listingId);
+    const listingId = [req.params.listingId];
+
+    let query = `
+    SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user
+    FROM listings
+    JOIN types ON listings.type_id = types.id
+    JOIN time_period ON listings.time_period_id = time_period.id
+    JOIN users ON listings.user_id = users.id
+    WHERE listings.id = $1
+    `;
+
+    db.query(query, listingId)
+      .then(queryResult => {
+        const listing = queryResult.rows;
+        res.json(listing)
+        // const templateVars = {
+        //   listings
+        // };
+        // res.render('search-page', templateVars)
+      })
+      .catch(error => {
+        console.log("Query Error:", error.message);
+      })
+  });
+
   return router;
 };
 

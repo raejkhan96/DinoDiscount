@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dino Card</title>
+    <link rel="shortcut icon" type="image/png" href="dd_logo.png"/>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/background.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/listingCard.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-light" style="background-color: #055001;">
+      </nav>
+      <div class="d-flex flex-column bd-highlight navbar-light bg-light container-fluid">
+        <nav class="navbar navbar-light bg-light container">
+          <div class="container row align-items-center ps-1 pe-1">
+            <div class="col-1">
+              <img class="logo" src = "/images/dino.png"></img>
+            </div>
+            <div class="col-lg-7 col-sm-12 col-sm-input-lg align-items-end" >
+              <form >
+                <div class="input-group input-group-sm align-items-center">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="bi bi-search"></i></button>
+                  </div>
+                </div>
+              </form>
+              <!-- <form class="d-flex align-items-center">
+                <input class="form-control nav-search " type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success btn-sm nav-btn" type="submit">Search</button>
+              </form> -->
+           </div>
+            <div class="d-flex col-lg-4 justify-content-end col-sm-11 align-items-start ">
+              <span class="me-3">Hey DinoLover!</span>
+              <a class="btn btn-outline-success btn-sm nav-btn" href = "index.ejs">Post ad</a>
+            </div>
+          </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container" >
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Buy & Sell
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Carnivore</a></li>
+                    <li><a class="dropdown-item" href="#">Herbivore</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Omnivore</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="card-fullpage">
+        <div class="card-fullpage-info">
+          <div class="card-fullpage-title">
+              <!-- CHANGE -->
+              Stegosaurus
+          </div>
+          <div class="favorites-and-price">
+            <div class="dino-price">
+              <!-- CHANGE -->
+              $99,000
+            </div>
+            <div class="favorites">
+              <i class="bi bi-heart-fill"></i>
+              Add To Favorites
+            </div>
+            <div class="message-logo">
+              <i class="bi bi-chat-dots-fill"></i>
+              Send A Message!
+            </div>
+          </div>
+          <div class="card-image-info">
+            <div class="image-box">
+              <!-- CHANGE -->
+              <img src="https://discovery.sndimg.com/content/dam/images/discovery/editorial/Curiosity/2020/3/Stegosaurus_Getty_Images_SQ.png.rend.hgtvcom.406.406.suffix/1583192968245.png" alt="dino-image">
+            </div>
+            <div class="image-info">
+              <div class="user-avatar-info">
+                <a href="/" class="avatar-link">
+                  <div class="user-avatar">
+                    <!-- CHANGE -->
+                    <img src="https://www.shareicon.net/data/512x512/2015/09/24/645456_users_512x512.png" alt="avatar" id="avatar">
+                  </div>
+                  <div class="user-name">
+                    <div class = "user-tag">
+                      Seller:
+                    </div>
+                    <div class="user-name-box">
+                      <!-- CHANGE -->
+                      Dr. John Hammond
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="visits">
+                <i class="bi bi-eye"></i>
+                <div class="visits-tag">
+                  Visits:
+                </div>
+                <div class="visits-number">
+                  <!-- CHANGE -->
+                  0
+                </div>
+              </div>
+              <div class="postal-code">
+                <i class="bi bi-mailbox2"></i>
+                <div class="postal-code-tag">
+                  Postal Code:
+                </div>
+                <div class="postal-code-value">
+                  <!-- CHANGE -->
+                  123 ABC
+                </div>
+              </div>
+              <div class="diet-type">
+                <i class="bi bi-egg-fill"></i>
+                <div class="diet-type-tag">
+                  Diet Type:
+                </div>
+                <div clas="diet-type-value">
+                  <!-- CHANGE -->
+                  Herbivore
+                </div>
+              </div>
+              <div class="time-period">
+                <i class="bi bi-clock-fill"></i>
+                <div class="time-period-tag">
+                  Time Period:
+                </div>
+                <div class="time-period-value">
+                  <!-- CHANGE -->
+                  Jurassic
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-description">
+            <div class="card-description-tag">
+              Description:
+            </div>
+            <div class="card-description-value">
+              <!-- CHANGE -->
+              A large, slow moving plant-eater.
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
+
+

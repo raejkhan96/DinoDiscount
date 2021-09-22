@@ -9,8 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-const cookieParser = require('cookie-parser')
-
+const cookieParser = require('cookie-parser');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -21,7 +20,7 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +42,11 @@ const listingsRoutes = require("./routes/listings");
 const myfavoritesRoutes = require("./routes/favorites");
 const mylistingsRoutes = require("./routes/mylistings");
 const loginRoutes = require("./routes/login");
+const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
+const postAddRoutes = require("./routes/postAdd");
+const dinoCardRoutes = require('./routes/viewCard.js');
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,11 +54,20 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
+<<<<<<< HEAD
 app.use("/favorites", myfavoritesRoutes(db));
 app.use("/mylistings", mylistingsRoutes(db));
 app.use("/login", loginRoutes(db));
 //app.use("/api/listings", listingsRoutes(db));
+=======
+app.use("/favorites", favoritesRoutes(db));
+// app.use("/login", loginRoutes(db));
+app.use("/api/listings", listingsRoutes(db));
+app.use("/api/messages", messagesRoutes(db));
+>>>>>>> 2036051973fddfdff2388df503ea6e580279af5b
 app.use("/homepage", homeRoutes(db));
+app.use("/dinoCard", dinoCardRoutes(db));
+app.use("/postadd", postAddRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -70,13 +82,36 @@ app.use("/homepage", homeRoutes(db));
 //   res.redirect('/');
 // });
 
+
 app.get("/", (req, res) => {
   user_id = req.params.user_id;
   //console.log("req session:", req.session);
   res.render("index", {user_id});
 });
 
+// app.get("/dinoCard", (req, res) => {
+//   res.render("dinoCard");
+// });
 
+
+app.get('/login/:id', (req, res) => {
+  // cookie-parser
+  res.cookie('user_id', req.params.id);
+
+  // redirect the client
+  res.redirect('/homepage');
+});
+
+
+app.get("/api/maps", (req, res) => {
+
+  const templateVars = {
+    latitude: 51.505,
+    longitude: -0.09
+  };
+
+  res.render("maps", templateVars);
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
