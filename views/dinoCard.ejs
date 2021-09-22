@@ -24,81 +24,19 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-light" style="background-color: #055001;">
-      </nav>
-      <div class="d-flex flex-column bd-highlight navbar-light bg-light container-fluid">
-        <nav class="navbar navbar-light bg-light container">
-          <div class="container row align-items-center ps-1 pe-1">
-            <div class="col-1">
-              <img class="logo" src = "/images/dino.png"></img>
-            </div>
-            <div class="col-lg-7 col-sm-12 col-sm-input-lg align-items-end" >
-              <form >
-                <div class="input-group input-group-sm align-items-center">
-                  <input type="text" class="form-control" placeholder="Search">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="bi bi-search"></i></button>
-                  </div>
-                </div>
-              </form>
-              <!-- <form class="d-flex align-items-center">
-                <input class="form-control nav-search " type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success btn-sm nav-btn" type="submit">Search</button>
-              </form> -->
-           </div>
-            <div class="d-flex col-lg-4 justify-content-end col-sm-11 align-items-start ">
-              <span class="me-3">Hey DinoLover!</span>
-              <a class="btn btn-outline-success btn-sm nav-btn" href = "index.ejs">Post ad</a>
-            </div>
-          </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light container" >
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    Buy & Sell
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Carnivore</a></li>
-                    <li><a class="dropdown-item" href="#">Herbivore</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Omnivore</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link disabled">Disabled</a>
-                </li>
-              </ul>
-            </div>
-        </nav>
-      </div>
-    </header>
+    <%- include('partials/_header') %>
 
     <main>
       <div class="card-fullpage">
         <div class="card-fullpage-info">
           <div class="card-fullpage-title">
               <!-- CHANGE -->
-              Stegosaurus
+              <%= listing.name %>
           </div>
           <div class="favorites-and-price">
             <div class="dino-price">
               <!-- CHANGE -->
-              $99,000
+              $<%= listing.price.toLocaleString() %>
             </div>
             <div class="favorites">
               <i class="bi bi-heart-fill"></i>
@@ -112,7 +50,7 @@
           <div class="card-image-info">
             <div class="image-box">
               <!-- CHANGE -->
-              <img src="https://discovery.sndimg.com/content/dam/images/discovery/editorial/Curiosity/2020/3/Stegosaurus_Getty_Images_SQ.png.rend.hgtvcom.406.406.suffix/1583192968245.png" alt="dino-image">
+              <img src="<%= listing.picture %>" alt="dino-image">
             </div>
             <div class="image-info">
               <div class="user-avatar-info">
@@ -127,7 +65,7 @@
                     </div>
                     <div class="user-name-box">
                       <!-- CHANGE -->
-                      Dr. John Hammond
+                      <%= listing.posted_user %>
                     </div>
                   </div>
                 </a>
@@ -139,7 +77,7 @@
                 </div>
                 <div class="visits-number">
                   <!-- CHANGE -->
-                  0
+                  <%= listing.visits %>
                 </div>
               </div>
               <div class="postal-code">
@@ -159,7 +97,7 @@
                 </div>
                 <div clas="diet-type-value">
                   <!-- CHANGE -->
-                  Herbivore
+                  <%= listing.type %>
                 </div>
               </div>
               <div class="time-period">
@@ -169,7 +107,7 @@
                 </div>
                 <div class="time-period-value">
                   <!-- CHANGE -->
-                  Jurassic
+                  <%= listing.time_period %>
                 </div>
               </div>
             </div>
@@ -180,7 +118,7 @@
             </div>
             <div class="card-description-value">
               <!-- CHANGE -->
-              A large, slow moving plant-eater.
+              <%= listing.description %>
             </div>
           </div>
         </div>

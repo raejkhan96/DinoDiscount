@@ -101,8 +101,7 @@ const listingsRoutes = function(db) {
   });
 
   router.get("/:listingId", (req, res) => {
-
-    res.cookie('listing_id', req.params.listingId);
+    const user = req.cookies.user;
     const listingId = [req.params.listingId];
 
     let query = `
@@ -116,12 +115,13 @@ const listingsRoutes = function(db) {
 
     db.query(query, listingId)
       .then(queryResult => {
-        const listing = queryResult.rows;
-        res.json(listing)
-        // const templateVars = {
-        //   listings
-        // };
-        // res.render('search-page', templateVars)
+        const listing = queryResult.rows[0];
+        const templateVars = {
+          user,
+          listing
+        };
+        console.log(listing)
+        res.render('dinoCard', templateVars)
       })
       .catch(error => {
         console.log("Query Error:", error.message);
