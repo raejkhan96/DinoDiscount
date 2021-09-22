@@ -11,3 +11,15 @@ body {
   width: 300px;
   background-color: red
 }
+
+.card:hover{
+  box-shadow: 5px 5px #37D338;
+}
+
+.shadow-sm:hover{
+  box-shadow: 5px 5px #37D338;
+}
+
+.card-title{
+  text-transform: uppercase;
+}
