@@ -44,7 +44,7 @@ const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
 const dinoCardRoutes = require('./routes/viewCard.js');
-const postAddRoutes = require("./routes/postadd");
+const postAddRoutes = require("./routes/post-add");
 
 
 // Mount all resource routes
