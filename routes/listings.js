@@ -105,7 +105,7 @@ const listingsRoutes = function(db) {
     const listingId = [req.params.listingId];
 
     let query = `
-    SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user
+    SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user, users.user_pic AS user_pic
     FROM listings
     JOIN types ON listings.type_id = types.id
     JOIN time_period ON listings.time_period_id = time_period.id
