@@ -54,17 +54,11 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
-<<<<<<< HEAD
 app.use("/favorites", myfavoritesRoutes(db));
 app.use("/mylistings", mylistingsRoutes(db));
 app.use("/login", loginRoutes(db));
-//app.use("/api/listings", listingsRoutes(db));
-=======
-app.use("/favorites", favoritesRoutes(db));
-// app.use("/login", loginRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
->>>>>>> 2036051973fddfdff2388df503ea6e580279af5b
 app.use("/homepage", homeRoutes(db));
 app.use("/dinoCard", dinoCardRoutes(db));
 app.use("/postadd", postAddRoutes(db));

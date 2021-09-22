@@ -10,5 +10,5 @@ VALUES
 ('Alamosaurus', 299, 'This is the only Late Cretaceous sauropod that has been found in North America.', 'https://tinyurl.com/5dc5mv6v', 2, 3, 1, 0),
 ('Amargasaurus', 9000, 'This dinosaur had a double row of spines along its back which may have supported a twin ‘sail’ of skin. ', 'https://tinyurl.com/42rhad9f', 1, 3, 2, 0),
 ('Velociraptor', 40000000, 'It was a bipedal carnivore with a long, stiffened tail and had an enlarged, sickle-shaped claw on each hindfoot, which is thought to have been used to kill its prey.', 'https://tinyurl.com/y737avxf', 1, 2, 1, 12),
-('Velociraptor', 50000000, 'Have 3 well behaved and loyal raptors. They come as a trio but open for offers if you only want one', 'https://i.pinimg.com/1200x/20/8c/cd/208ccd2d7ed38812bef80a69d19284d9.jpg', 1, 2, 3, 18);
-('Plesiosaurus', 3250000, "Friendly plesiosaurus, that loves to go on long swims. Recommended to have a private lake so it doesn't wipe out the local marine life.", 'https://images.dinosaurpictures.org/plesiosaurus_549f.jpg', 1, 2, 4, 0);
+('Velociraptor', 50000000, 'Have 3 well behaved and loyal raptors. They come as a trio but open for offers if you only want one', 'https://i.pinimg.com/1200x/20/8c/cd/208ccd2d7ed38812bef80a69d19284d9.jpg', 1, 2, 3, 18),
+('Plesiosaurus', 3250000, 'Friendly plesiosaurus, that loves to go on long swims. Recommended to have a private lake so it does not wipe out the local marine life.', 'https://images.dinosaurpictures.org/plesiosaurus_549f.jpg', 1, 2, 4, 0);
