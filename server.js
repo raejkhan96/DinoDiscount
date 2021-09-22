@@ -44,6 +44,7 @@ const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
 const postAddRoutes = require("./routes/postAdd");
+const dinoCardRoutes = require('./routes/viewCard.js');
 
 
 // Mount all resource routes
@@ -57,6 +58,7 @@ app.use("/favorites", favoritesRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/homepage", homeRoutes(db));
+app.use("/dinoCard", dinoCardRoutes(db));
 app.use("/postadd", postAddRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -78,6 +80,11 @@ app.get("/", (req, res) => {
   //console.log("req session:", req.session);
   res.render("index", {user_id});
 });
+
+// app.get("/dinoCard", (req, res) => {
+//   res.render("dinoCard");
+// });
+
 
 app.get('/login/:id', (req, res) => {
   // cookie-parser
