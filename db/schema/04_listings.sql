@@ -8,10 +8,10 @@ CREATE TABLE listings (
   price INTEGER NOT NULL,
   description TEXT,
   picture VARCHAR(255) NOT NULL,
-  type_id INTEGER REFERENCES types(id) NOT NULL,
+  type_id INTEGER REFERENCES types(id) ON DELETE CASCADE,
   visits INTEGER DEFAULT 0,
-  time_period_id INTEGER REFERENCES time_period(id) NOT NULL,
-  user_id INTEGER REFERENCES users(id) NOT NULL,
+  time_period_id INTEGER REFERENCES time_period(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   sold BOOLEAN DEFAULT FALSE
 );
 

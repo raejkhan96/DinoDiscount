@@ -40,7 +40,8 @@ app.use(cookieParser());
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require("./routes/listings");
-const favoritesRoutes = require("./routes/favorites");
+const myfavoritesRoutes = require("./routes/favorites");
+const mylistingsRoutes = require("./routes/mylistings");
 const loginRoutes = require("./routes/login");
 const homeRoutes = require("./routes/homeListings");
 
@@ -50,9 +51,10 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/listings", listingsRoutes(db));
 //app.use("/:user_id/favorites", favoritesRoutes(db));
-app.use("/favorites", favoritesRoutes(db));
+app.use("/favorites", myfavoritesRoutes(db));
+app.use("/mylistings", mylistingsRoutes(db));
 app.use("/login", loginRoutes(db));
-app.use("/api/listings", listingsRoutes(db));
+//app.use("/api/listings", listingsRoutes(db));
 app.use("/homepage", homeRoutes(db));
 // Note: mount other resources here, using the same pattern above
 

@@ -5,6 +5,7 @@ const router  = express.Router();
 const listingsRoutes = function(db) {
 
   router.get("/", (req, res) => {
+    const user = req.cookies.user;
     let query = `
     SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user
     FROM listings
@@ -14,8 +15,10 @@ const listingsRoutes = function(db) {
     ORDER BY listings.date_posted DESC
     `;
     db.query(query)
-      .then(listings => {
-        res.json(listings.rows);
+      .then(results => {
+        const listings = results.rows;
+        const templateVars = {user, listings}
+        res.render("homepage", templateVars);
       })
       .catch(error => {
         console.log("Query Error:", error.message);
@@ -27,6 +30,7 @@ const listingsRoutes = function(db) {
 
   router.get("/search", (req, res) => {
     // console.log("##Test", req.query);
+    const user = req.cookies.user;
 
     const search = {
       name: req.query.name,
@@ -86,7 +90,7 @@ const listingsRoutes = function(db) {
         const listings = searchResults.rows;
         // res.json(listings);
         const templateVars = {
-          listings
+          user , listings
         };
 
         res.render('search-page', templateVars)
