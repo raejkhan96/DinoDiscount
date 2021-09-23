@@ -19,7 +19,7 @@ const postAddRoutes = function(db) {
     addNewListingParams.push(req.body.picture);
     addNewListingParams.push(req.body.type);
     addNewListingParams.push(req.body.time_period);
-    addNewListingParams.push(req.cookies.user_id);
+    addNewListingParams.push(req.cookies.user.user_id);
 
     const query = `
     INSERT INTO listings (name, price, description, picture, type_id, time_period_id, user_id)
