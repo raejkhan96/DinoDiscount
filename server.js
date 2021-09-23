@@ -71,9 +71,7 @@ app.use("/postadd", postAddRoutes(db));
 // });
 
 app.get("/", (req, res) => {
-  user_id = req.params.user_id;
-  //console.log("req session:", req.session);
-  res.render("homepage", {user_id});
+  res.redirect("/homepage");
 });
 
 app.get("/api/maps", (req, res) => {

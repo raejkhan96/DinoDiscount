@@ -5,6 +5,7 @@ const router  = express.Router();
 const homeRoutes = function(db) {
 
   router.get("/", (req, res) => {
+    const user = req.cookies.user;
     let query = `
     SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user
     FROM listings
@@ -17,6 +18,7 @@ const homeRoutes = function(db) {
       .then(searchResults => {
         const listings = searchResults.rows;
         const templateVars = {
+          user,
           listings
         };
 

@@ -23,6 +23,29 @@
   <body>
     <%- include('partials/_header') %>
 
+    <!-- Message popup Modal -->
+    <div class="modal fade" id="message_modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-1">
+            <h5 class="modal-title" id="exampleModalLabel">Contact seller </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form action="/messages" method="POST">
+            <div class="modal-body pt-0">
+              <label for="user_message" class="form-label"></label>
+              <textarea class="form-control" name="user_message" rows="3" placeholder="Type message"></textarea>
+              <input type="hidden" name="listing_id" value="<%= listing.id %>">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-outline-primary">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <main>
       <div class="card-fullpage">
         <div class="card-fullpage-info">
@@ -44,7 +67,7 @@
             <div class="message-logo">
               <i class="bi bi-chat-dots-fill"></i>
               <form action="#" method="GET">
-                <button type="submit" class="btn btn-med btn-outline-secondary" style="border-style: none;">Send A Message!</button>
+                <button type="submit" class="btn btn-med btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#message_modal" style="border-style: none;">Send A Message!</button>
               </form>
             </div>
           </div>

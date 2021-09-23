@@ -5,5 +5,6 @@ CREATE TABLE messages (
   user_sender_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   listing_id INTEGER REFERENCES listings(id) ON DELETE CASCADE,
   user_receiver_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  message TEXT
+  message TEXT,
+  read BOOLEAN DEFAULT FALSE
 );
