@@ -11,6 +11,7 @@ const myfavoritesRoutes = (db) => {
     JOIN users ON user_favorite.user_id = users.id
     JOIN listings ON user_favorite.listing_id = listings.id
     WHERE user_favorite.user_id = $1
+    ORDER BY user_favorite.id DESC
     `;
 
     db.query(query, [user.user_id])

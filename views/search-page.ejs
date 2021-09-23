@@ -88,9 +88,10 @@
                             <i class="bi bi-eye-fill"></i> View</button>
                         </form>
                       </div>
-                      <form>
-                        <button type="button" class="btn btn-med btn-outline-secondary" data-bs-toggle="button">
-                        <i class="bi bi-heart-fill"></i> Add To Favorites</button>
+                      <form action="/favorites/add/<%= listing.id %>" method="GET">
+                        <button type="submit" class="btn btn-med btn-outline-secondary">
+                        <i class="bi bi-heart-fill"></i> Add To Favorites
+                      </button>
                       </form>
                       <small class="text-muted"><%= listing.visits %> visits</small>
                     </div>
