@@ -124,7 +124,6 @@ const listingsRoutes = function(db) {
         const updateQueryParams = [];
         updateQueryParams.push(counter);
         updateQueryParams.push(listing.id);
-        console.log("#####VISITS####", listing.visits);
         db.query(updateVisitCountQuery, updateQueryParams)
         .then(result => {
           console.log(result.command);

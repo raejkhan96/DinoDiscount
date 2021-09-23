@@ -6,32 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Search page</title>
-    <link rel="shortcut icon" type="image/png" href="dd_logo.png"/>
+    <link rel="shortcut icon" type="image/png" href="dd_logo copy.png"/>
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/background.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
-    <%- include('partials/_header') %>
+  <body style="background-color: #f8f9fa">
 
     <main>
+      <%- include('partials/_header') %>
 
       <!-- Search/filer dropdown -->
 
-      <div class="d-grid gap-2 my-1">
+      <div class="d-grid my-1 mx-5" style="background-color: #f8f9fa; border-style:outset; border-radius: 8px;">
         <button class="mx-3 py-0 btn btn-lg" data-bs-toggle="collapse" data-bs-target="#filter-bar">Filter by</button>
       </div>
-      <aside id="filter-bar" class="collapse bd-aside sticky-xl-top text-muted align-self-start px-4 my-2">
+      <aside id="filter-bar" class="collapse bd-aside sticky-xl-top text-muted align-self-start px-4 my-2 mx-4">
         <form action="/listings/search" method="GET" class="row g-3">
           <div class="col-4">
             <label for="name" class="form-label">Name</label>
