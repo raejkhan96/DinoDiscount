@@ -12,13 +12,14 @@ const listingsRoutes = function(db) {
     JOIN types ON listings.type_id = types.id
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
-    ORDER BY listings.date_posted DESC
+    WHERE listings.sold = false
+    ORDER BY listings.id DESC
     `;
     db.query(query)
       .then(results => {
         const listings = results.rows;
         const templateVars = {user, listings}
-        res.render("homepage", templateVars);
+        res.render("search-page", templateVars);
       })
       .catch(error => {
         console.log("Query Error:", error.message);
@@ -47,6 +48,7 @@ const listingsRoutes = function(db) {
     JOIN types ON listings.type_id = types.id
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
+    WHERE listings.sold = false
     `;
 
     if(search.description) {

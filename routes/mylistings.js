@@ -13,7 +13,7 @@ const mylistingsRoutes = (db) => {
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
     WHERE users.id = $1
-    ORDER BY listings.date_posted DESC
+    ORDER BY listings.ID DESC
     `;
 
     db.query(query, [user.user_id])
