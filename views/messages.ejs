@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -39,7 +40,7 @@
             </div>
             <p class="h6 mt-3 mb-auto"> <%= message.message %> </p>
             <a href="/listings/<%= message.listing_id %>" class="btn btn-med btn-outline-secondary mt-4"> <i class="bi bi-eye-fill"></i> View Listing </a>
-            <button type="button" class="btn btn-med btn-outline-secondary mt-4" data-sender-name="<%= message.sender_name %>" data-message-id="<%= message.message_id %>" data-bs-toggle="modal" data-bs-target="#message_modal">Reply</button>
+            <button type="button" class="btn btn-med btn-outline-secondary mt-4" data-sender-name="<%= message.sender_name %>" data-message-id="<%= message.message_id %>" data-bs-toggle="modal" data-bs-target="#message_modal"> <i class="bi bi-reply-fill"></i> Reply</button>
         </div>
       </div>
     </div>
@@ -49,7 +50,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header border-0 pb-1">
-            <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+            <h5 class="modal-title" id="exampleModalLabel"> Reply</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <form action="/messages/reply" method="POST">
