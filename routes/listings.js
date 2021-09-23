@@ -30,6 +30,7 @@ const listingsRoutes = function(db) {
     const user = req.cookies.user;
 
     const search = {
+      description: req.query.navbar_search,
       name: req.query.name,
       type: req.query.type,
       time_period: req.query.time_period,
@@ -47,6 +48,11 @@ const listingsRoutes = function(db) {
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
     `;
+
+    if(search.description) {
+      searchParams.push(`%${search.description}%`);
+      query += `AND listings.description ILIKE $${searchParams.length}`
+    }
 
     if(search.name) {
       searchParams.push(`%${search.name}%`);
