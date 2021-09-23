@@ -5,9 +5,9 @@ const postAddRoutes = function(db) {
 
 
   router.get("/", (req, res) => {
-
-    res.render('post-add');
-
+    const user = req.cookies.user;
+    const templateVars = { user };
+    res.render('post-add', templateVars);
   });
 
 
@@ -26,6 +26,7 @@ const postAddRoutes = function(db) {
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
     `;
+
     db.query(query, addNewListingParams)
       .then(queryResult => {
         console.log("New listing insterted into db\n", queryResult.rows)

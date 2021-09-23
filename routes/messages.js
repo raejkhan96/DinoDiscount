@@ -15,7 +15,8 @@ const messagesRoutes = function(db) {
   });
 
   router.get("/", (req, res) => {
-    const queryParams = [req.cookies.user_id];
+    const user = req.cookies.user;
+    const queryParams = [req.cookies.user.user_id];
 
     let query = `
     SELECT messages.id AS message_id, messages.user_sender_id AS user_sender_id, messages.listing_id AS listing_id, messages.message AS message, messages.user_receiver_id AS user_receiver_id, users.name AS sender_name
@@ -29,6 +30,7 @@ const messagesRoutes = function(db) {
     .then(queryResult => {
         const userMessages = queryResult.rows
         const templateVars = {
+          user,
           userMessages
       };
         // res.json(userMessages)

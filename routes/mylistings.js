@@ -3,11 +3,9 @@ const express = require('express');
 const router  = express.Router();
 
 const mylistingsRoutes = (db) => {
-  console.log("inside favorites");
 
   router.get("/", (req, res) => {
     const user = req.cookies.user;
-   // console.log("req:", req.cookies.user_id);
     let query = `
     SELECT listings.*, types.name AS type, time_period.name AS time_period, users.name AS posted_user
     FROM listings

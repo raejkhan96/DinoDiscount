@@ -26,10 +26,7 @@ const listingsRoutes = function(db) {
   });
 
 
-
-
   router.get("/search", (req, res) => {
-    // console.log("##Test", req.query);
     const user = req.cookies.user;
 
     const search = {
@@ -88,7 +85,6 @@ const listingsRoutes = function(db) {
     db.query(query, searchParams)
       .then(searchResults => {
         const listings = searchResults.rows;
-        // res.json(listings);
         const templateVars = {
           user , listings
         };
