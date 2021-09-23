@@ -1,4 +1,5 @@
 // See: https://sass-lang.com/
+// Layout of homepage
 
 body {
   background-color: #EEE;
@@ -20,6 +21,20 @@ body {
   box-shadow: 5px 5px #37D338;
 }
 
+.shadow:hover{
+  box-shadow: 5px 5px #37D338;
+}
+
 .card-title{
   text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.text-end{
+  color: #37D338;
+}
+
+.py-5{
+  background-color: white;
 }
