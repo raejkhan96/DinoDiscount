@@ -37,11 +37,15 @@
             </div>
             <div class="favorites">
               <i class="bi bi-heart-fill"></i>
-              Add To Favorites
+              <form action="/favorites/add/<%= listing.id %>" method="GET">
+                <button type="submit" class="btn btn-med btn-outline-secondary" style="border-style: none;">Add To Favorites</button>
+              </form>
             </div>
             <div class="message-logo">
               <i class="bi bi-chat-dots-fill"></i>
-              Send A Message!
+              <form action="#" method="GET">
+                <button type="submit" class="btn btn-med btn-outline-secondary" style="border-style: none;">Send A Message!</button>
+              </form>
             </div>
           </div>
           <div class="card-image-info">

@@ -41,8 +41,27 @@ const myfavoritesRoutes = (db) => {
         console.log("Query Error:", error.message);
       })
   });
-    return router;
 
+
+  router.get("/add/:id", (req, res) => {
+    const user_id = req.cookies.user.user_id;
+    const listing_id = req.params.id;
+    let query = `
+    INSERT INTO user_favorite (user_id, listing_id)
+    VALUES ($1, $2)
+    `;
+
+    db.query(query, [user_id, listing_id])
+    .then(searchResults => {
+      res.redirect("/favorites");
+    })
+      .catch(error => {
+        console.log("Query Error:", error.message);
+      })
+  });
+
+
+  return router;
 }
 
 module.exports = myfavoritesRoutes;
