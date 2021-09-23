@@ -31,10 +31,19 @@ body {
   font-style: italic;
 }
 
-.text-end{
-  color: #37D338;
-}
 
 .py-5{
   background-color: white;
+}
+
+.btn-outline-secondary{
+  background-color: white;
+  border-color: #198754;
+  color: #198754;
+}
+
+.btn-outline-secondary:hover{
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
 }

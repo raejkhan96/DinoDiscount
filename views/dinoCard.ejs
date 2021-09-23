@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/background.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/listingCard.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/styles/listingCard.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -58,16 +58,16 @@
               <!-- CHANGE -->
               $<%= listing.price.toLocaleString() %>
             </div>
-            <div class="favorites">
-              <i class="bi bi-heart-fill"></i>
-              <form action="/favorites/add/<%= listing.id %>" method="GET">
-                <button type="submit" class="btn btn-med btn-outline-secondary" style="border-style: none;">Add To Favorites</button>
-              </form>
-            </div>
+            <form action="/favorites/add/<%= listing.id %>" method="GET">
+              <div class="favorites">
+                <button type="submit" class="btn btn-med btn-outline-secondary" style="border-style: none;"> <i class="bi bi-heart-fill"></i> Add To Favorites</button>
+              </div>
+            </form>
+
             <div class="message-logo">
-              <i class="bi bi-chat-dots-fill"></i>
               <form action="#" method="GET">
-                <button type="submit" class="btn btn-med btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#message_modal" style="border-style: none;">Send A Message!</button>
+                <!-- <button type="submit" class="btn btn-med btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#message_modal" style="border-style: none;">Send A Message!</button> -->
+                <button type="submit" class="btn btn-med btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#message_modal" style="border-style: none;"> <i class="bi bi-chat-dots-fill"></i> Send A Message!</button>
               </form>
             </div>
           </div>
