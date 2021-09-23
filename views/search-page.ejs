@@ -85,7 +85,7 @@
                     <p class="card-text"><%= listing.description.slice(0, 40) %></p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="view-button">
-                        <form action="/api/listings/<%=listing.id%>" method="GET">
+                        <form action="/listings/<%=listing.id%>" method="GET">
                           <button type="submit" class="btn btn-med btn-outline-secondary">
                             <i class="bi bi-eye-fill"></i> View</button>
                         </form>

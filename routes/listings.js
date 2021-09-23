@@ -112,12 +112,29 @@ const listingsRoutes = function(db) {
     db.query(query, listingId)
       .then(queryResult => {
         const listing = queryResult.rows[0];
-        const templateVars = {
-          user,
-          listing
-        };
-        console.log(listing)
-        res.render('dinoCard', templateVars)
+
+        let counter = listing.visits;
+        counter ++;
+        listing.visits = counter;
+        let updateVisitCountQuery = `
+        UPDATE listings
+        SET visits = $1
+        WHERE listings.id = $2;
+        `
+        const updateQueryParams = [];
+        updateQueryParams.push(counter);
+        updateQueryParams.push(listing.id);
+        console.log("#####VISITS####", listing.visits);
+        db.query(updateVisitCountQuery, updateQueryParams)
+        .then(result => {
+          console.log(result.command);
+          const templateVars = {
+            user,
+            listing
+          };
+          res.render('dinoCard', templateVars)
+        })
+
       })
       .catch(error => {
         console.log("Query Error:", error.message);
