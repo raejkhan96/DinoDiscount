@@ -1,10 +1,7 @@
 INSERT INTO user_favorite (user_id, listing_id)
 VALUES
-(1, 2),
+(1, 4),
 (1, 3),
-(2, 1),
-(3, 1),
-(4 ,2),
-(4, 1);
-
-
+(2, 2),
+(3, 2),
+(4 ,2)

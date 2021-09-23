@@ -1,6 +1,7 @@
 -- Widgets table seeds here (Example)
 INSERT INTO listings (name, price, description, picture, type_id, time_period_id, user_id, visits)
 VALUES
+('Rubber Duck', 404000, 'Highly knowledgeable and very helpful in solving issues. Prefers to stay quiet and squeaks occasionally.', '/rubberDuck.jpg', 2, 1, 4, 0),
 ('T-rex', 10000000, 'Scary dino', 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/rockcms/2021-04/210415-tyrannosaurus-rex-mn-1550-9612a9.jpg', 1, 3, 1, 10),
 ('Triceratops', 150000, 'Three horned dino', 'https://i.natgeofe.com/n/b96b572c-98e2-4ec2-a714-08a6b95cf646/triceratopshorridus_hexdcb_2x3.jpg', 2, 3, 2, 5),
 ('Stegosaurus', 99000, 'A large, slow moving plant-eater', 'https://discovery.sndimg.com/content/dam/images/discovery/editorial/Curiosity/2020/3/Stegosaurus_Getty_Images_SQ.png.rend.hgtvcom.406.406.suffix/1583192968245.png', 2, 2, 3, 0),
