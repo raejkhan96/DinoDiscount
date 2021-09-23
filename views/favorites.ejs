@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-
 
 </head>
 
@@ -27,6 +27,10 @@
 
     <div class="container-fluid bg-light pt-3">
     <% for (let listing of listings) { %>
+    <% const date = new Date(listing.date_posted); %>
+    <% const datePosted = date.toISOString().substring(0, 10); %>
+
+
 
     <div class="container bg-light mt-5 align-items-center justify-content-center ">
 
@@ -48,7 +52,7 @@
                 </div>
                 <div class='visits'><i class="bi bi-eye-fill">&nbsp&nbsp<%= listing.visits %> visits</i> </div>
                 <p class="card-text mt-3 small"><%= listing.description %></p>
-                <p class="card-text mt-5"><small class="text-muted">Last updated <%=listing.date_posted%></small></p>
+                <p class="card-text mt-5"><small class="text-muted">Date posted: <%= datePosted %></small></p>
               </div>
             </div>
           </div>

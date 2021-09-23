@@ -17,7 +17,6 @@ const myfavoritesRoutes = (db) => {
     .then(searchResults => {
       const listings = searchResults.rows;
       const templateVars = { user,listings };
-      console.log(templateVars);
       res.render('favorites', templateVars)
     })
       .catch(error => {

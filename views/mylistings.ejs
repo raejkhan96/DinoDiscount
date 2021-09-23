@@ -29,6 +29,8 @@
 
     <div class="container-fluid bg-light pt-3 ml-5">
     <% for (let listing of listings) { %>
+    <% const date = new Date(listing.date_posted); %>
+    <% const datePosted = date.toISOString().substring(0, 10); %>
 
     <div class="container-fluid bg-light mt-5"></div>
       <div class="card mb-3" style="max-width: 75%; margin-left: 60px;">
@@ -51,7 +53,7 @@
                     </div>
                   </div>
                   <span class="border-start mt-4 "><p class="card-text small"><%= listing.description %></p></span>
-                  <p class="card-text mt-4"><small class="text-muted">Last updated <%=listing.date_posted%></small></p>
+                  <p class="card-text mt-4"><small class="text-muted">Date posted: <%=datePosted%></small></p>
                   <div class="row">
                     <div class="col-3">
                       <div class='visits'><i class="bi bi-eye-fill">&nbsp&nbsp<%= listing.visits %> visits</i></div>
