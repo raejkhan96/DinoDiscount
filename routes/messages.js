@@ -23,7 +23,8 @@ const messagesRoutes = function(db) {
     FROM messages
     JOIN users ON messages.user_sender_id = users.id
     JOIN listings ON messages.listing_id = listings.id
-    WHERE messages.user_receiver_id = $1;
+    WHERE messages.user_receiver_id = $1
+    ORDER BY messages.id DESC;
     `;
 
     db.query(query, queryParams)

@@ -83,8 +83,8 @@ const listingsRoutes = function(db) {
       query += `ORDER BY listings.visits DESC`
     }
 
-    if(search.recent) {
-      query += `ORDER BY listings.date_posted DESC`
+    if(search.most_recent) {
+      query += `ORDER BY listings.id DESC`
     }
 
 
