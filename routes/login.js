@@ -17,7 +17,7 @@ const loginRoutes = (db) => {
         const user_name = results.rows[0].name;
         const user = {user_id,user_name};
         res.cookie('user', user);
-        res.redirect("/listings");
+        res.redirect("/homepage");
       })
       .catch(error => {
         console.log("Query Error:", error.message);

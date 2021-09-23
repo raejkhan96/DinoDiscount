@@ -12,7 +12,7 @@ const homeRoutes = function(db) {
     JOIN types ON listings.type_id = types.id
     JOIN time_period ON listings.time_period_id = time_period.id
     JOIN users ON listings.user_id = users.id
-    ORDER BY listings.date_posted DESC
+    ORDER BY listings.id DESC
     `;
     db.query(query)
       .then(searchResults => {
