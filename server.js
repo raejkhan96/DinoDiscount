@@ -43,7 +43,7 @@ const loginRoutes = require("./routes/login");
 const messagesRoutes = require("./routes/messages");
 const homeRoutes = require("./routes/homeListings");
 const postAddRoutes = require("./routes/postAdd");
-const dinoCardRoutes = require('./routes/viewCard.js');
+const dinoCardRoutes = require('./routes/viewCard');
 
 
 // Mount all resource routes
@@ -52,7 +52,6 @@ app.use("/listings", listingsRoutes(db));
 app.use("/favorites", myfavoritesRoutes(db));
 app.use("/mylistings", mylistingsRoutes(db));
 app.use("/login", loginRoutes(db));
-app.use("/api/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/homepage", homeRoutes(db));
 app.use("/dinoCard", dinoCardRoutes(db));

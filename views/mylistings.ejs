@@ -27,12 +27,11 @@
   <main>
     <%- include('partials/_header') %>
 
-    <div class="container-fluid bg-light pt-3">
+    <div class="container-fluid bg-light pt-3 ml-5">
     <% for (let listing of listings) { %>
 
-    <div class="container bg-light mt-5 align-items-center justify-content-center ">
-
-        <div class="card mb-3  " style="max-width: 75%;">
+    <div class="container-fluid bg-light mt-5"></div>
+      <div class="card mb-3" style="max-width: 75%; margin-left: 60px;">
           <div class="row g-0">
             <div class="col-4">
               <figure class="figure ms-4 mt-3 justify-content-center align-items-center">
@@ -51,27 +50,28 @@
                       <a href="/mylistings/delete/<%= listing.id %>" class="btn btn-outline-success btn-sm">Remove</a>
                     </div>
                   </div>
-                 <span class="border-start mt-4 "><p class="card-text small"><%= listing.description %></p></span>
-                 <p class="card-text mt-4"><small class="text-muted">Last updated <%=listing.date_posted%></small></p>
-                 <div class="row">
+                  <span class="border-start mt-4 "><p class="card-text small"><%= listing.description %></p></span>
+                  <p class="card-text mt-4"><small class="text-muted">Last updated <%=listing.date_posted%></small></p>
+                  <div class="row">
                     <div class="col-3">
-                       <div class='visits'><i class="bi bi-eye-fill">&nbsp&nbsp<%= listing.visits %> visits</i></div>
+                      <div class='visits'><i class="bi bi-eye-fill">&nbsp&nbsp<%= listing.visits %> visits</i></div>
                     </div>
                     <div class="col-3">
-                        <% if(listing.sold) { %>
-                        <span class="ms-2 text-danger fw-bolder text-italic">Sold</span>
-                        <% } %>
+                      <% if(listing.sold) { %>
+                      <span class="ms-2 text-danger fw-bolder text-italic">Sold</span>
+                      <% } %>
                     </div>
                     <div class="col-6"></div>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    <div>
 
     <% } %>
-  </div>
+    </div>
   </main>
 
 
